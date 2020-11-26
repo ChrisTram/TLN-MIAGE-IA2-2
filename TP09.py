@@ -9,7 +9,13 @@ from xml.dom import minidom
 rests = minidom.parse('.\Restaurants_Train.xml')
 laptops = minidom.parse('.\Laptop_Train.xml')
 
-items_rests = rests.getElementsByTagName('sentences')
+items_rests = rests.getElementsByTagName('sentence')
 
 for elem in items_rests:
-    print(elem)
+    sentence = elem.getElementsByTagName("text")[0]
+    aspect_terms = elem.getElementsByTagName("aspectTerm")
+    print("//// Sentence : ////")
+    print(sentence.firstChild.data)
+    print("//// Terms : ////")
+    for term in aspect_terms:
+        print(term.getAttribute("term"))

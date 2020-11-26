@@ -17,6 +17,7 @@ model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_sample, binary=
 print(len(model.vocab))
 print(len(model['university']))
 
-model.most_similar(positive=['university'], topn = 3)
-model.most_similar(positive=['woman','king'], negative=['man'], topn = 1) 
-model.most_similar(positive=['Paris','Germany'], negative=['Berlin'], topn = 1)
+print("most similars :")
+print(model.most_similar(positive=['university'], topn = 3))
+print(model.most_similar(positive=['woman','king'], negative=['man'], topn = 1))
+print(model.most_similar(positive=['Paris','Germany'], negative=['Berlin'], topn = 1))

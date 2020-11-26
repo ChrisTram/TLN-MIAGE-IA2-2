@@ -18,3 +18,4 @@ def get_named_entity(text):
 text = 'The United States'
 
 print(get_named_entity(text))
+

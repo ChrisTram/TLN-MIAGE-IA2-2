@@ -1,5 +1,11 @@
 import tensorflow as tf
 
+
+VOCAB_SIZE=1000
+encoder = tf.keras.layers.experimental.preprocessing.TextVectorization(
+    max_tokens=VOCAB_SIZE)
+encoder.adapt(train_dataset.map(lambda text, label: text))
+
 model = tf.keras.Sequential([
     encoder,
     tf.keras.layers.Embedding(len(encoder.get_vocabulary()), 64, mask_zero=True),

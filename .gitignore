@@ -2,3 +2,4 @@ brown.embedding
 .env
 .vscode
 __pycache__
+*.xlsx

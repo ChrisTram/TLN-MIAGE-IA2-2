@@ -7,10 +7,6 @@ from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 
-#import nltk
-# nltk.download('sentiwordnet')
-
-
 def get_named_entity(text):
     nlp = en_core_web_sm.load()
     doc = nlp(text)

@@ -7,6 +7,7 @@ from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 
+
 def get_named_entity(text):
     nlp = en_core_web_sm.load()
     doc = nlp(text)
@@ -19,9 +20,6 @@ def get_named_entity(text):
         named_entity.append(ne)
 
     return named_entity
-
-
-text = 'The United States'
 
 
 def penn_to_wn(tag):

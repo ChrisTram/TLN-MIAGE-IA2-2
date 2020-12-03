@@ -1,3 +1,5 @@
+from enum import Enum
+
 import gensim
 import nltk
 import numpy as np
@@ -8,13 +10,15 @@ from text_processing import *
 
 import pandas as pd
 
+
 def get_datas(xmlPath):
     sentences = []
     terms = []
-    sents_scores = []
     polarities = []
+    sents_scores = []
     fromList = []
     toList = []
+
     doc = minidom.parse(xmlPath)
     items = doc.getElementsByTagName('sentence')
     for elem in items:
@@ -23,23 +27,17 @@ def get_datas(xmlPath):
 
         # We only keep datas with terms
         if len(aspect_terms) > 0:
-            sentences.append(sentence.firstChild.data)
-            sentence_terms = []
-            sentence_sents_score = []
-            sentence_polarities = []
-            sentence_fromList = []
-            sentence_toList = []
             for term in aspect_terms:
-                sentence_terms.append(term.getAttribute("term"))
-                sentence_polarities.append(term.getAttribute("polarity"))
-                sentence_fromList.append(term.getAttribute("from"))
-                sentence_toList.append(term.getAttribute("to"))
-
-            terms.append(sentence_terms)
-            sents_scores.append(get_sentiment_score(sentence_terms))
-            polarities.append(sentence_polarities)
-            fromList.append(sentence_fromList)
-            toList.append(sentence_toList)
+                # We dont keep the term with 'conflict' label
+                if term.getAttribute("polarity") != 'conflict':
+                    # Add all features to the lists
+                    # For each term we had the full sentence as a features
+                    sentences.append(sentence.firstChild.data)
+                    terms.append(term.getAttribute("term"))
+                    polarities.append(term.getAttribute("polarity"))
+                    sents_scores.append(get_sentiment_score(term.getAttribute("term")))
+                    fromList.append(term.getAttribute("from"))
+                    toList.append(term.getAttribute("to"))
 
             # Create a Dataframe from all lists
             df = pd.DataFrame(sentences, columns=['Sentences'])
@@ -52,13 +50,17 @@ def get_datas(xmlPath):
     return df
 
 
-#print(terms_rests[0])
-#print(f"senti_val is {get_sentiment_score(terms_rests[0])}")
+def data_pre_treatment(df):
+    # We remove
+    label = df['Polarities']
+
+    return label
 
 
+if __name__ == "__main__":
+    df_rest = get_datas('.\Dataset\Restaurants_Train.xml')
+    df_lap = get_datas('.\Dataset\Laptop_Train.xml')
 
-df_rest = get_datas('.\Dataset\Restaurants_Train.xml')
-df_lap = get_datas('.\Dataset\Laptop_Train.xml')
+    print(df_rest)
 
-df_rest.to_excel("output_rest.xlsx")
-df_lap.to_excel("output_lap.xlsx")
+    #print(data_pre_treatment(df_rest))

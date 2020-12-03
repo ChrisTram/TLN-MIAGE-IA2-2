@@ -8,7 +8,7 @@ from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 
 #import nltk
-#nltk.download('sentiwordnet')
+# nltk.download('sentiwordnet')
 
 
 def get_named_entity(text):
@@ -23,6 +23,7 @@ def get_named_entity(text):
         named_entity.append(ne)
 
     return named_entity
+
 
 text = 'The United States'
 
@@ -42,8 +43,7 @@ def penn_to_wn(tag):
     return None
 
 
-
-def get_sentiment(word,tag):
+def get_sentiment(word, tag):
     """ returns list of pos neg and objective score. But returns empty list if not present in senti wordnet. """
 
     wn_tag = penn_to_wn(tag)
@@ -62,6 +62,10 @@ def get_sentiment(word,tag):
     synset = synsets[0]
     swn_synset = swn.senti_synset(synset.name())
 
-    return [swn_synset.pos_score(),swn_synset.neg_score(),swn_synset.obj_score()]
+    return [swn_synset.pos_score(), swn_synset.neg_score(), swn_synset.obj_score()]
 
 
+def get_sentiment_score(words):
+    pos_vals = pos_tag(words)
+    senti_vals = [get_sentiment(x, y) for (x, y) in pos_vals]
+    return senti_vals

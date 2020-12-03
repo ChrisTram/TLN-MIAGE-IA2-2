@@ -7,7 +7,6 @@ from xml.dom import minidom
 from text_processing import *
 
 
-
 def get_datas(xmlPath):
     sentences = []
     terms = []
@@ -55,13 +54,3 @@ for i in range(len(sentences_lapts)):
     print("//// fromList : ", fromList_lapts[i])
     print("//// toList : ", toList_lapts[i])
 
-
-ps = PorterStemmer()
-words_data = ['this','movie','is','wonderful']
-
-
-pos_val = pos_tag(words_data)
-senti_val = [get_sentiment(x,y) for (x,y) in pos_val]
-
-print(f"pos_val is {pos_val}")
-print(f"senti_val is {senti_val}")

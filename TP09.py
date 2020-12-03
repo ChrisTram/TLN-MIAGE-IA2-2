@@ -5,6 +5,7 @@ from nltk.corpus import brown
 from nltk.data import find
 from xml.dom import minidom
 
+
 def get_datas(xmlPath):
     sentences = []
     terms = []
@@ -13,8 +14,8 @@ def get_datas(xmlPath):
     for elem in items:
         sentence = elem.getElementsByTagName("text")[0]
         aspect_terms = elem.getElementsByTagName("aspectTerm")
-        #We only keep datas with terms
-        if(len(aspect_terms) != 0):
+        # We only keep datas with terms
+        if len(aspect_terms) != 0:
             sentences.append(sentence.firstChild.data)
             sentence_terms = []
             for term in aspect_terms:
@@ -23,9 +24,8 @@ def get_datas(xmlPath):
     return sentences, terms
 
 
-sentences_rests, terms_rests = get_datas('.\Restaurants_Train.xml')
-sentences_lapts, terms_lapts = get_datas('.\Laptop_Train.xml')
-
+sentences_rests, terms_rests = get_datas('.\Dataset\Restaurants_Train.xml')
+sentences_lapts, terms_lapts = get_datas('.\Dataset\Laptop_Train.xml')
 
 for i in range(len(sentences_rests)):
     print("//// Sentence Restaurant : ", sentences_rests[i])

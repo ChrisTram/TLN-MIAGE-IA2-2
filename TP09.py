@@ -6,6 +6,7 @@ from nltk.data import find
 from xml.dom import minidom
 from text_processing import *
 
+import pandas as pd
 
 
 def get_datas(xmlPath):
@@ -19,8 +20,9 @@ def get_datas(xmlPath):
     for elem in items:
         sentence = elem.getElementsByTagName("text")[0]
         aspect_terms = elem.getElementsByTagName("aspectTerm")
+
         # We only keep datas with terms
-        if len(aspect_terms) != 0:
+        if len(aspect_terms) > 0:
             sentences.append(sentence.firstChild.data)
             sentence_terms = []
             sentence_polarities = []
@@ -31,37 +33,25 @@ def get_datas(xmlPath):
                 sentence_polarities.append(term.getAttribute("polarity"))
                 sentence_fromList.append(term.getAttribute("from"))
                 sentence_toList.append(term.getAttribute("to"))
+
             terms.append(sentence_terms)
             polarities.append(sentence_polarities)
             fromList.append(sentence_fromList)
             toList.append(sentence_toList)
-    return sentences, terms, polarities, fromList, toList
+
+            # Create a Dataframe from all lists
+            df = pd.DataFrame(sentences, columns=['Sentences'])
+            df['Terms'] = terms
+            df['Polarities'] = polarities
+            df['From'] = fromList
+            df['To'] = toList
+
+    return df
 
 
-sentences_rests, terms_rests, polarities_rest, fromList_rest, toList_rest = get_datas('.\Dataset\Restaurants_Train.xml')
-sentences_lapts, terms_lapts, polarities_lapts, fromList_lapts, toList_lapts  = get_datas('.\Dataset\Laptop_Train.xml')
-
-for i in range(len(sentences_rests)):
-    print("//// Sentence Restaurant : ", sentences_rests[i])
-    print("//// Terms : ", terms_rests[i])
-    print("//// Polarities : ", polarities_rest[i])
-    print("//// fromList : ", fromList_rest[i])
-    print("//// toList : ", toList_rest[i])
-
-for i in range(len(sentences_lapts)):
-    print("//// Sentence Laptop : ", sentences_lapts[i])
-    print("//// Terms : ", terms_lapts[i])
-    print("//// Polarities : ", polarities_lapts[i])
-    print("//// fromList : ", fromList_lapts[i])
-    print("//// toList : ", toList_lapts[i])
+df_rest = get_datas('.\Dataset\Restaurants_Train.xml')
+df_lap = get_datas('.\Dataset\Laptop_Train.xml')
 
 
-ps = PorterStemmer()
-words_data = ['this','movie','is','wonderful']
 
-
-pos_val = pos_tag(words_data)
-senti_val = [get_sentiment(x,y) for (x,y) in pos_val]
-
-print(f"pos_val is {pos_val}")
-print(f"senti_val is {senti_val}")
+print(df_rest)

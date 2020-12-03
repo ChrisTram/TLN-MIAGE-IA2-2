@@ -1,1 +1,4 @@
 brown.embedding
+.env
+.vscode
+__pycache__

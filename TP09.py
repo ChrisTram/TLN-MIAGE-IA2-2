@@ -1,12 +1,12 @@
 import gensim
 import nltk
 import numpy as np
+import pandas as pd
 from nltk.corpus import brown
 from nltk.data import find
 from xml.dom import minidom
 from text_processing import *
 
-import pandas as pd
 
 def get_datas(xmlPath):
     sentences = []
@@ -25,7 +25,6 @@ def get_datas(xmlPath):
         if len(aspect_terms) > 0:
             sentences.append(sentence.firstChild.data)
             sentence_terms = []
-            sentence_sents_score = []
             sentence_polarities = []
             sentence_fromList = []
             sentence_toList = []

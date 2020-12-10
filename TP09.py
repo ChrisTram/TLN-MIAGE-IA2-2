@@ -33,7 +33,7 @@ def get_datas(xmlPath):
                 sentences.append(sentence.firstChild.data)
                 terms.append(term.getAttribute("term"))
                 polarity.append(term.getAttribute("polarity"))
-                sents_scores.append(get_sentiment_score(term.getAttribute("term")))
+                sents_scores.append(get_sentiment_score(term.getAttribute("term"), sentence.firstChild.data))
                 fromList.append(term.getAttribute("from"))
                 toList.append(term.getAttribute("to"))
 
@@ -65,6 +65,7 @@ if __name__ == "__main__":
     # df_rest = get_datas('.\Dataset\Restaurants_Test_Gold.xml')
     df_rest = get_datas('.\Dataset\Restaurants_Train.xml')
     df_lap = get_datas('.\Dataset\Laptop_Train.xml')
+
 
     df_rest, label = data_pre_treatment(df_rest)
     print(df_rest)

@@ -1805,7 +1805,7 @@
         </aspectTerms>
     </sentence>
     <sentence id="3049">
-        <text>Yeah, of course smarty pants "fix it now")Software - Compared to the early 2011 edition I did see inbuilt applications crashing and it prompted me to send the report to Apple (which I promptly did).</text>
+        <text>Yeah, of course smarty pants "fix it now" Software - Compared to the early 2011 edition I did see inbuilt applications crashing and it prompted me to send the report to Apple (which I promptly did).</text>
         <aspectTerms>
             <aspectTerm term="inbuilt applications" polarity="negative" from="98" to="118"/>
             <aspectTerm term="Software" polarity="negative" from="42" to="50"/>
@@ -3270,7 +3270,7 @@
         <text>For the Bluetooth to work properly, you must install the Launch Manager on the Drivers/Applications DVD, or it will not show after the reload.</text>
         <aspectTerms>
             <aspectTerm term="Bluetooth" polarity="neutral" from="8" to="17"/>
-            <aspectTerm term="Drivers/Applications DVD" polarity="neutral" from="79" to="103"/>
+            <aspectTerm term="Drivers Applications DVD" polarity="neutral" from="79" to="103"/>
             <aspectTerm term="Launch Manager" polarity="neutral" from="57" to="71"/>
         </aspectTerms>
     </sentence>
@@ -3954,7 +3954,7 @@
         </aspectTerms>
     </sentence>
     <sentence id="1650">
-        <text>With the macbook pro it comes with freesecuritysoftware to protect it from viruses and other intrusive things from downloads and internet surfing or emails.</text>
+        <text>With the macbook pro it comes with free securitysoftware to protect it from viruses and other intrusive things from downloads and internet surfing or emails.</text>
         <aspectTerms>
             <aspectTerm term="securitysoftware" polarity="positive" from="39" to="55"/>
         </aspectTerms>
@@ -4478,7 +4478,7 @@
     <sentence id="2086">
         <text>My ONLY issues are: 1) the screen/video resolution won't increase to a higher resolution then 1024 x 60</text>
         <aspectTerms>
-            <aspectTerm term="screen/video resolution" polarity="negative" from="27" to="50"/>
+            <aspectTerm term="screen video resolution" polarity="negative" from="27" to="50"/>
             <aspectTerm term="resolution" polarity="negative" from="78" to="88"/>
         </aspectTerms>
     </sentence>
@@ -5208,7 +5208,7 @@
     <sentence id="2281">
         <text>It is a big big, but since it has a 18.4" screen what would you expect!</text>
         <aspectTerms>
-            <aspectTerm term="18.4&quot; screen" polarity="conflict" from="36" to="48"/>
+            <aspectTerm term="screen" polarity="conflict" from="36" to="48"/>
         </aspectTerms>
     </sentence>
     <sentence id="1978">
@@ -6512,7 +6512,7 @@
         </aspectTerms>
     </sentence>
     <sentence id="1050">
-        <text>*=Webcam is a bit laggy, not the greatest.</text>
+        <text>Webcam is a bit laggy, not the greatest.</text>
         <aspectTerms>
             <aspectTerm term="Webcam" polarity="negative" from="2" to="8"/>
         </aspectTerms>
@@ -6635,7 +6635,7 @@
             <aspectTerm term="Vista" polarity="negative" from="7" to="12"/>
             <aspectTerm term="programs" polarity="negative" from="60" to="68"/>
             <aspectTerm term="install" polarity="negative" from="32" to="39"/>
-            <aspectTerm term="uninstall " polarity="negative" from="44" to="54"/>
+            <aspectTerm term="uninstall" polarity="negative" from="44" to="54"/>
         </aspectTerms>
     </sentence>
     <sentence id="2359">
@@ -9729,7 +9729,7 @@
         <text>Every driver on the drivers/applications DVD is everything you will need for a reload.</text>
         <aspectTerms>
             <aspectTerm term="driver" polarity="positive" from="6" to="12"/>
-            <aspectTerm term="drivers/applications DVD" polarity="positive" from="20" to="44"/>
+            <aspectTerm term="drivers applications DVD" polarity="positive" from="20" to="44"/>
         </aspectTerms>
     </sentence>
     <sentence id="943">
@@ -12259,7 +12259,7 @@
         </aspectTerms>
     </sentence>
     <sentence id="1548">
-        <text>Apparently well-built and gorgeous to look at, the i5 MacBook Pro is a winning combination of price and performance.</text>
+        <text>Apparently well built and gorgeous to look at, the i5 MacBook Pro is a winning combination of price and performance.</text>
         <aspectTerms>
             <aspectTerm term="price" polarity="positive" from="94" to="99"/>
             <aspectTerm term="performance" polarity="positive" from="104" to="115"/>
@@ -13021,7 +13021,7 @@
         <text>But when I received my replacement, I made BOTH recovery DVDs (4), and a driver/application DVD.</text>
         <aspectTerms>
             <aspectTerm term="recovery DVDs" polarity="neutral" from="48" to="61"/>
-            <aspectTerm term="driver/application DVD" polarity="neutral" from="73" to="95"/>
+            <aspectTerm term="driver application DVD" polarity="neutral" from="73" to="95"/>
         </aspectTerms>
     </sentence>
     <sentence id="2252">
@@ -13482,7 +13482,7 @@
         <text>I tell everyone that I know, friends, family and enemies this is the absolute worst computer i have ever used.</text>
     </sentence>
     <sentence id="552">
-        <text>Overall : Poor, Features: Average, Performance: Poor, Battery Life: Excellent, Price-Value: Poor</text>
+        <text>Overall : Poor, Features: Average, Performance: Poor, Battery Life: Excellent, Price/Value: Poor</text>
         <aspectTerms>
             <aspectTerm term="Features" polarity="neutral" from="16" to="24"/>
             <aspectTerm term="Performance" polarity="negative" from="35" to="46"/>
@@ -13970,7 +13970,7 @@
         <text>I got it for Christmas, and I was so excited to set it up!</text>
     </sentence>
     <sentence id="1101">
-        <text>Strengths:Well-shaped Weaknesses:A bad videocard!</text>
+        <text>Strengths: Well shaped Weaknesses:A bad videocard!</text>
         <aspectTerms>
             <aspectTerm term="videocard" polarity="negative" from="39" to="48"/>
             <aspectTerm term="shaped" polarity="positive" from="15" to="21"/>

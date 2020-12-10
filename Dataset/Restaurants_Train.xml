@@ -43,7 +43,7 @@
         </aspectCategories>
     </sentence>
     <sentence id="2846">
-        <text>Not only was the food outstanding, but the little 'perks' were great.</text>
+        <text>Not only was the food outstanding, but the little perks were great.</text>
         <aspectTerms>
             <aspectTerm term="food" polarity="positive" from="17" to="21"/>
             <aspectTerm term="perks" polarity="positive" from="51" to="56"/>
@@ -4022,7 +4022,7 @@
         </aspectCategories>
     </sentence>
     <sentence id="1817">
-        <text>Food-awesome.</text>
+        <text>Food awesome.</text>
         <aspectTerms>
             <aspectTerm term="Food" polarity="positive" from="0" to="4"/>
         </aspectTerms>

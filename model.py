@@ -35,5 +35,7 @@ if __name__ == "__main__":
     model.compile(loss='binary_crossentropy', optimizer='adam',
                   metrics=['accuracy'])
 
+    print(padded_sequence)
+
     history = model.fit(padded_sequence, label[0],
                         validation_split=0.2, epochs=5, batch_size=32)

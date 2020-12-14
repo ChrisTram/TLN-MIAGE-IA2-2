@@ -10,7 +10,6 @@ from xml.dom import minidom
 from text_processing import *
 
 
-
 def get_datas(xmlPath):
     sentences = []
     terms = []
@@ -41,6 +40,7 @@ def get_datas(xmlPath):
             df = pd.DataFrame(sentences, columns=['Sentences'])
             df['Terms'] = terms
             df['Sentiments_Scores'] = sents_scores
+            df['Sentiments_Scores'] = df['Sentiments_Scores'].factorize()[0]
             df['polarity'] = polarity
             df['From'] = fromList
             df['To'] = toList
@@ -56,7 +56,7 @@ def data_pre_treatment(df):
     label = df['polarity'].factorize()
 
     # We dont need the label in the dataframe anymore
-    df.drop(['polarity'], axis=1)
+    # df.drop(['polarity'], axis=1)
 
     return df, label
 
@@ -66,7 +66,6 @@ if __name__ == "__main__":
     df_rest = get_datas('.\Dataset\Restaurants_Train.xml')
     df_lap = get_datas('.\Dataset\Laptop_Train.xml')
 
-
     df_rest, label = data_pre_treatment(df_rest)
-    print(df_rest)
+    print(df_rest['Terms'])
     print(label)

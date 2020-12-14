@@ -40,12 +40,12 @@ if __name__ == "__main__":
 
     # Append the different features to the bag of words
     features = append_feature_to_vector(text_padded_sequence, terms_padded_sequence)
+    features = append_feature_to_vector(features, df['Sentiments_Scores'].to_numpy())
 
     print(features)
-
     features = np.array(features)
 
-    embedding_vector_length = 64
+    embedding_vector_length = 100
 
     # We define the model
     model = tf.keras.Sequential([

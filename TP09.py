@@ -70,6 +70,11 @@ def make_prediction_noLabel(path):
 
     df, label = data_pre_treatment(df)
 
+    # Load data with label
+    dfLabel = get_datas('.\Dataset\\' + path + '_Test_Gold.xml')
+
+    dfLabel, label_train = data_pre_treatment(df)
+
     maxlen = 100
 
     # Sentences to bag of words
@@ -100,7 +105,7 @@ def make_prediction_noLabel(path):
     """)
     print(path)
     # Evaluate the model
-    print(saved_model.evaluate(predictions, label[0]))
+    print(saved_model.evaluate(predictions, label_train[0]))
 
 
 def make_prediction(path):

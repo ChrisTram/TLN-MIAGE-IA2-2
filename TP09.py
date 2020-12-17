@@ -1,13 +1,13 @@
-from enum import Enum
-
-import gensim
-import nltk
 import numpy as np
 import pandas as pd
-from nltk.corpus import brown
-from nltk.data import find
 from xml.dom import minidom
 from text_processing import *
+import tensorflow as tf
+
+import model
+
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 
 def get_datas(xmlPath):
@@ -62,13 +62,41 @@ def data_pre_treatment(df):
 
 
 if __name__ == "__main__":
-    # df_rest = get_datas('.\Dataset\Restaurants_Test_Gold.xml')
-    df_rest = get_datas('.\Dataset\Restaurants_Train.xml')
-    df_lap = get_datas('.\Dataset\Laptop_Train.xml')
+    ##### Change the path to load the rigth model
+    path = 'Restaurants'
+    # path = 'Laptop'
 
-    df_rest, label = data_pre_treatment(df_rest)
-    print(df_rest['Terms'])
-    print(label)
-    
-    # Charge le model
-    model = tf.keras.models.load_model('model.h5')
+    df = get_datas('.\Dataset\\' + path + '_Test_Gold.xml')
+
+    # Load the model
+    saved_model = tf.keras.models.load_model(path + '_model.h5')
+
+    df, label = data_pre_treatment(df)
+
+    maxlen = 100
+
+    # Sentences to bag of words
+    text = df['Sentences'].values
+    tokenizer = Tokenizer(num_words=5000)
+    tokenizer.fit_on_texts(text)
+    vocab_size = len(tokenizer.word_index) + 1
+    encoded_docs = tokenizer.texts_to_sequences(text)
+    text_padded_sequence = pad_sequences(encoded_docs, maxlen=maxlen)
+
+    # Terms to bag of words, we use the same tokenizer we got from the sentences
+    terms = df['Terms'].values
+    encoded_docs = tokenizer.texts_to_sequences(terms)
+    terms_padded_sequence = pad_sequences(encoded_docs, maxlen=10)
+
+    # Append the different features to the bag of words
+    features = model.append_feature_to_vector(text_padded_sequence, terms_padded_sequence)
+    features = model.append_feature_to_vector(features, df['Sentiments_Scores'].to_numpy())
+
+    features = np.array(features)
+
+    # Predict the entire dataset
+    predictions = saved_model.predict(features)
+
+    # Evaluate the model
+    print(saved_model.evaluate(predictions, label[0]))
+

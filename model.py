@@ -19,8 +19,8 @@ def append_feature_to_vector(vector, feature):
 
 if __name__ == "__main__":
     ##### Change the path to train the rigth model
-    path = 'Restaurants'
-    # path = 'Laptop'
+    # path = 'Restaurants'
+    path = 'Laptop'
 
     df = TP09.get_datas('.\Dataset\\' + path + '_Train.xml')
     df, label = TP09.data_pre_treatment(df)

@@ -48,6 +48,8 @@ def get_datas(xmlPath):
     return df
 
 
+
+    
 def data_pre_treatment(df):
     # We remove the term with 'conflict' label
     df = df[df['polarity'] != 'conflict']
@@ -61,11 +63,7 @@ def data_pre_treatment(df):
     return df, label
 
 
-if __name__ == "__main__":
-    ##### Change the path to load the rigth model
-    path = 'Restaurants'
-    # path = 'Laptop'
-
+def make_prediction(path):
     df = get_datas('.\Dataset\\' + path + '_Test_Gold.xml')
 
     # Load the model
@@ -96,7 +94,21 @@ if __name__ == "__main__":
 
     # Predict the entire dataset
     predictions = saved_model.predict(features)
-
+    print("""
+    //////////////////////////////////////////////////
+    //////////////////// PREDICTION //////////////////
+    //////////////////////////////////////////////////
+    """)
+    print(path)
     # Evaluate the model
     print(saved_model.evaluate(predictions, label[0]))
 
+
+if __name__ == "__main__":
+
+    ##### Change the path to load the rigth model
+    path_r = 'Restaurants'
+    path_l = 'Laptop'
+
+    make_prediction(path_r)
+    make_prediction(path_l)

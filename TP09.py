@@ -109,6 +109,11 @@ if __name__ == "__main__":
 
     # Evaluate the model
     r_metrics = saved_model.evaluate(r_predictions, label_gold[0])
+    print("""
+    //////////////////////////////////////////////////
+    //////////// PREDICTION RESTAURANT ///////////////
+    //////////////////////////////////////////////////
+    """)
     print(str(saved_model.metrics_names[1]) + ': ' + str(r_metrics[1]))
 
 
@@ -131,4 +136,9 @@ if __name__ == "__main__":
 
     # Evaluate the model
     l_metrics = saved_model.evaluate(l_predictions, label_gold[0])
+    print("""
+    //////////////////////////////////////////////////
+    //////////// PREDICTION LAPTOP ///////////////////
+    //////////////////////////////////////////////////
+    """)
     print(str(saved_model.metrics_names[1]) + ': ' + str(l_metrics[1]))

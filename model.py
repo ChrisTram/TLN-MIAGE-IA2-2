@@ -61,4 +61,8 @@ if __name__ == "__main__":
                   metrics=['accuracy'])
 
     history = model.fit(features, label[0],
-                        validation_split=0.2, epochs=15, batch_size=32)
+                        validation_split=0.2, epochs=7, batch_size=32)
+    
+    # Sauvegarde le model
+    model.save('model.h5')
+    

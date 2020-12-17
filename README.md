@@ -1,5 +1,5 @@
 
-Nous avons utilisé un réseau de neurone LSTM (Long short-term memory) pour obtenir des niveaux de prédictions convaincants. 70% avec le dataset restaurant et 59% avec le dataset laptop.
+Nous avons utilisé un réseau de neurone LSTM (Long short-term memory) pour obtenir des niveaux de prédictions convaincants. 70% avec le dataset restaurant et 59% avec le dataset laptop. Nous utilisons également spacy. 
 
 # A result example : 
 

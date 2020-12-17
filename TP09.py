@@ -69,3 +69,6 @@ if __name__ == "__main__":
     df_rest, label = data_pre_treatment(df_rest)
     print(df_rest['Terms'])
     print(label)
+    
+    # Charge le model
+    model = tf.keras.models.load_model('model.h5')

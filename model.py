@@ -18,7 +18,11 @@ def append_feature_to_vector(vector, feature):
 
 
 if __name__ == "__main__":
-    df = TP09.get_datas('.\Dataset\Restaurants_Train.xml')
+    ##### Change the path to train the rigth model
+    path = 'Restaurants'
+    # path = 'Laptop'
+
+    df = TP09.get_datas('.\Dataset\\' + path + '_Train.xml')
     df, label = TP09.data_pre_treatment(df)
 
     maxlen = 100
@@ -36,13 +40,10 @@ if __name__ == "__main__":
     encoded_docs = tokenizer.texts_to_sequences(terms)
     terms_padded_sequence = pad_sequences(encoded_docs, maxlen=10)
 
-    print(tokenizer.word_index)
-
     # Append the different features to the bag of words
     features = append_feature_to_vector(text_padded_sequence, terms_padded_sequence)
     features = append_feature_to_vector(features, df['Sentiments_Scores'].to_numpy())
 
-    print(features)
     features = np.array(features)
 
     embedding_vector_length = 100
@@ -62,7 +63,5 @@ if __name__ == "__main__":
 
     history = model.fit(features, label[0],
                         validation_split=0.2, epochs=7, batch_size=32)
-    
-    # Sauvegarde le model
-    model.save('model.h5')
-    
+
+    model.save(path + '_model.h5')
